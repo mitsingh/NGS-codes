@@ -3,9 +3,9 @@ title: "R Notebook"
 output: html_notebook
 ---
 
-__Name:__
+__Name:__ Mitali Singh
 
-__Student ID:__
+__Student ID:__ 999290264
 
 For each of the exercises below, take advantage of R markdown and the notebook features.  That is include the code and have Rstudio embed your answers.  See Exercise 0 for an example
 
@@ -21,19 +21,45 @@ dir()
 
 ## Exercise 1
 _Use sum() to determine the sum of numbers from 2000 to 20000.  Provide your code and the actual sum in your answer._
-
+- 
+```{r}
+sum(2000,20000)
+```
 
 ## Exercise 2
 _In one or two sentences, describe what the above code snippet it did._
 
+- 5 is assigned to a variable 'a' and a sequence of numbers from 2 to 20 are assigned to another variable 'b'. The command is 3rd and 4th line simply reads the content of variable a and b respectively.
+
 ## Exercise 3
 _Add the contents of a and b together and place the results in a new object.  Examine the result.  Include your code.  Try using both `sum()` and `+`; do you get different results?  If so, why?_
 
+```{r}
+a <- 5 
+b <- 2:20
+sum <- sum(a,b)
+sum
+```
+ This command sums up all the numbers in both variables together (2-20 and 5) and gives us one single result.
+ 
+```{r}
+sum2 <- a+b
+sum2
+```
+Whereas the command with '+' runs a loop of adding the element of variable a (5) to the elements of variable b (2-20) one at a time. So, it adds 5 to 2 first and then 5 to 3 and so on. 
+
 ## Exercise 4
 _What is the sum of the 5th through 10th element of object b?  Provide your code and the sum._
+```{r}
+sum (b [c(5:10)])
+```
+
 
 ## Exercise 5
 _What is the sum of the 3rd, 8th, and 10th element of b?  For both of these exercises should only need to have "b" in your code once._
+```{r}
+sum (b[c(3,8,10)])
+```
 
 
 ## Exercise 6
