@@ -22,7 +22,7 @@ dir()
 ## Exercise 1
 
 _Use sum() to determine the sum of numbers from 2000 to 20000.  Provide your code and the actual sum in your answer._
-- 
+
 ```{r}
 sum(2000,20000)
 ```
@@ -30,7 +30,7 @@ sum(2000,20000)
 ## Exercise 2
 _In one or two sentences, describe what the above code snippet it did._
 
-- 5 is assigned to a variable 'a' and a sequence of numbers from 2 to 20 are assigned to another variable 'b'. The command is 3rd and 4th line simply reads the content of variable a and b respectively.
+> 5 is assigned to a variable 'a' and a sequence of numbers from 2 to 20 are assigned to another variable 'b'. The command is 3rd and 4th line simply reads the content of variable a and b respectively.
 
 ## Exercise 3
 _Add the contents of a and b together and place the results in a new object.  Examine the result.  Include your code.  Try using both `sum()` and `+`; do you get different results?  If so, why?_
@@ -41,13 +41,13 @@ b <- 2:20
 sum <- sum(a,b)
 sum
 ```
- This command sums up all the numbers in both variables together (2-20 and 5) and gives us one single result.
+> This command sums up all the numbers in both variables together (2-20 and 5) and gives us one single result.
  
 ```{r}
 sum2 <- a+b
 sum2
 ```
-Whereas the command with '+' runs a loop of adding the element of variable a (5) to the elements of variable b (2-20) one at a time. So, it adds 5 to 2 first and then 5 to 3 and so on. 
+> Whereas the command with '+' runs a loop of adding the element of variable a (5) to the elements of variable b (2-20) one at a time. So, it adds 5 to 2 first and then 5 to 3 and so on. 
 
 ## Exercise 4
 _What is the sum of the 5th through 10th element of object b?  Provide your code and the sum._
@@ -58,6 +58,7 @@ sum (b [c(5:10)])
 
 ## Exercise 5
 _What is the sum of the 3rd, 8th, and 10th element of b?  For both of these exercises should only need to have "b" in your code once._
+
 ```{r}
 sum (b[c(3,8,10)])
 ```
@@ -76,12 +77,13 @@ m <- matrix(data=1:25, ncol=5, byrow=T)
 m
 m[5,5]
 ```
-- The first number identifies row and the second number identifies column
+>  The first number identifies row and the second number identifies column
+
 ```{r}
 m[3,]
 ```
 
-- ```m[3,]``` displays all the elements of row 3 (includes all columns for row 3)
+>  ```m[3,]``` displays all the elements of row 3 (includes all columns for row 3)
 ```{r}
 m[,3:5]
 ```
@@ -93,13 +95,13 @@ _What does the cbind command do?  How about rbind?_
 ```{r}
 cbind(m,101:105)
 ```
-
+> cbind takes a sequence of vectors,matrix or data frame arguments and combines by columns
 
 
 ```{r}
 rbind(m,101:105)
 ```
-
+> rbind takes a sequence of vectors,matrix or data frame arguments and combines by rows
 
 _Create a new object "n" where the first row is a new row of numbers (your choice) and the following rows are the followed by the m matrix._
 
@@ -132,7 +134,7 @@ table (Evalue==0&Percentid<50)
 ```
 
 _How many hits have an e-value of 0?_
-- 2443 hits have an e-value of 0
+> 2443 hits have an e-value of 0
 
 ```{r}
 table(Evalue==0)
@@ -144,45 +146,51 @@ _How many have hits have a percent identity > 50?_
 table(Percentid>50)
 ```
 
-- 5271 hits have a percent identity >5
+> 5271 hits have a percent identity >5
 
 _Recalculate the above values but in percentage of hits rather than absolute values._
 
-- for E_value=0: 
-2443/34,874=7%
+> for E_value=0: 
+```{r}
+2443/(32431+2443)*100
+```
 
-- For percent identity>50:
- 5271/(29603+5271)= 15.1%
- 
-_How many hits have an E-value of 0 and have a percent identity less than 50?_
+> For percent identity>50:
+
+```{r}
+5271/(29603+5271)*100
+```
+
+ _How many hits have an E-value of 0 and have a percent identity less than 50?_
+
 ```{r}
 table (Evalue==0&Percentid<50)
 ```
 
-- 948 hits
+> 948 hits
 
 _What is the minimum percent identity of the hits with an E-value equal to 0?_
 ```{r}
 
 min(fly.worm[which(fly.worm["E"]==0),"pct_ident"])
 ```
-- The minimum percent identity of the hits with an E-value to 0 is 24.07
+> The minimum percent identity of the hits with an E-value to 0 is 24.07
 
 
 ## Excercise 9
 _Are you surprised that sequences with relatively low percent identity can still have an E-value of 0?_
-- yes
+>  yes
 
 _State a hypothesis about what alignment properties might produce a zero E-value even when the percent identity is less than 50%._
 
-- The aligned sequences could have large gaps but the amino acids that actually align could have an exact alignment of amino acids (less mismatches). This would give a low E-value and low percent identity.
+> The aligned sequences could have large gaps but the amino acids that actually align could have an exact alignment of amino acids (less mismatches). This would give a low E-value and low percent identity.
 
 _Test your hypothesis_
 ```{r}
 allEval<- fly.worm[which(fly.worm["E"]==0),]
 allEval[which(allEval["pct_ident"]<50),]
 ```
-My hypothesis is wrong because the sequence has high number of mismatches (1508) and high umber of gaps (56). This means that the low E-value was not due to perfect alignment of the amino acids that actually aligned. 
+> My hypothesis is wrong because the sequence has high number of mismatches (1508) and high umber of gaps (56). This means that the low E-value was not due to perfect alignment of the amino acids that actually aligned. 
 
 
 ## Excercise 10
@@ -202,8 +210,10 @@ head(stereotype)
 ```
 
 _Record the answers to the "activity break sections" from Ciera's visualiztio tutorial here:_ 
- 1) Nerd females binge drink coffee but hardly ever drink alcohol
- -
+ **_Activity 1_**
+ 
+>  1) Nerd females binge drink coffee but hardly ever drink alcohol
+ 
 ```{r}
 nerds_and_metalheads <- subset(stereotype, population == "nerd" | population == "metalhead")
 
@@ -214,9 +224,10 @@ nrow(males.metalheads)
 nrow(males.hipsters)
 ```
 
-2) Yes, there are 64  more metalheads who binge drink alcohol and eat >20 tacos in a week.
+> 2) Yes, there are 64  more metalheads who binge drink alcohol and eat >20 tacos in a week.
 
-3) Are there more males in the metalheads who binge coffee (over 12 a week) and eat over 8 tacos a week in the metal heads or females metalheads?
+> 3) Are there more males in the metalheads who binge coffee (over 12 a week) and eat over 8 tacos a week in the metal heads or females metalheads?
+
 ```{r}
 females.only<- subset(stereotype, gender == "female")
 females.metalheads <- subset(females.only, population == "metalhead"& coffee > 12& tacos > 8)
@@ -226,19 +237,72 @@ nrow(males.metalheads)
 ```
 Yes, there are 35 more male metalheads than female metalheads who binge drink coffee (over 12 a week) and eat over 8 tacos a week.
 
-4) 
+> 4) the '==' function means that the query is **exactly** equal to the input. Example: E-value==0 will look for E-values that are exactly equal to 0, nothing else around it
+
+> Activity 2 : VISUALIZATION
+
+1) View the distribution of showers. Color by population.
+
+```{r}
+pl4<- ggplot(data=stereotype, mapping=aes(x=shower,fill=population))
+pl4<-pl4+geom_histogram()
+pl4
+```
+
+2) View the distribution of beer consumption and color by gender.
+
+```{r}
+pl5<- ggplot(data=stereotype, mapping=aes(x=beer,fill=gender))
+pl5<-pl5+geom_histogram()
+pl5
+```
+
+3)Find a way to create a plot using the the geom violin with the stereotype data set
+
+
+> ACTIVITY 3
+
+1) Make a graph that visually describes the difference between beer consumption between gender in the nerd category
+
+```{r}
+nerds<- subset(stereotype, population=="nerd")
+qplot(beer, data = nerds, geom = "density", fill = gender)
+
+```
+
+
+2) Using the ggplot2 documentation, explore three different geoms, using either the full data set or a subset of the data. Tell me something interesting about the data.
+
+```{r}
+qplot(computer, data=stereotype, geom="histogram", fill=population)
+```
 
 
 ## Exercise 12
 _Use ggplot to explore the relationship between score ("Score") and alignment length("len").  Provide a plot that illustrates the relationship and describe the relationship in words._
+
 ```{r}
-data(fly_worm_blast.out.gz)
+library (ggplot2)
+data=fly.worm
+pl1<-ggplot(data=fly.worm, mapping=aes(x=len, y=Score))
+pl1 <- pl1 + geom_smooth() 
+pl1
 ```
 
 
 
 ## Excercise 13
 _While you might expect that BLAST results with long alignments would have high scores, this is not always the case.  Form a hypothesis as to what might influence the relationship between alignment length and score.  Use ggplot to make a new plot to explore this hypothesis.  Does the plot support your hypothesis or not?  State your hypothesis, provide the code for your plot, and state your conclusion._
+
+> BLAST results with long alignments do not always have high scores because the alignments could have lots of mismatches. The plot supports my hypothesis as its shows that the length of an alignment and number of mismatches have a linear relationship which proves that an alignment of long length usually has more mismatches which would give a lower score. 
+Conclusion: Long alignments do not always have high scores due to the presence of high number of mismatches. 
+
+```{r}
+pl3<-ggplot(data=fly.worm, mapping=aes(x=len, y=mis))
+pl3 <- pl3 + geom_smooth() +geom_point()
+pl3
+```
+
 
 ** Turning in the assignment**
 
