@@ -30,7 +30,7 @@ sum(2000,20000)
 ## Exercise 2
 _In one or two sentences, describe what the above code snippet it did._
 
-> 5 is assigned to a variable 'a' and a sequence of numbers from 2 to 20 are assigned to another variable 'b'. The command is 3rd and 4th line simply reads the content of variable a and b respectively.
+> 5 is assigned to a variable 'a' and a sequence of numbers from 2 to 20 are assigned to another variable 'b'. The command in 3rd and 4th line simply reads the content of variable a and b respectively.
 
 ## Exercise 3
 _Add the contents of a and b together and place the results in a new object.  Examine the result.  Include your code.  Try using both `sum()` and `+`; do you get different results?  If so, why?_
@@ -77,7 +77,7 @@ m <- matrix(data=1:25, ncol=5, byrow=T)
 m
 m[5,5]
 ```
->  The first number identifies row and the second number identifies column
+>  The first number identifies the row and the second number identifies the column
 
 ```{r}
 m[3,]
@@ -268,6 +268,10 @@ pl5
 ```
 
 3)Find a way to create a plot using the the geom violin with the stereotype data set
+```{r}
+pl20<- ggplot(data=stereotype, mapping=aes(x=beer,y=tacos, fill=population)) + geom_violin()
+pl20
+```
 
 
 > ACTIVITY 3
@@ -300,9 +304,13 @@ p0<-ggplot(data=hipstersonly, mapping=aes(x=computer, y=age,fill=gender))
 p0<-p0+geom_point()+geom_smooth()
 p0
 ```
-> This data indicates that within the entire population, hipster females between 20-23 years of age spend the most time at their computers. 
+> This data indicates that hipster females between 20-23 years of age spend 40-50 hours on their computers (more than hispter males)
 
-3) 
+3) From your exploration of the stereotypes data make three hypotheses about the data.
+
+> a) Out of all populations, the hippie population shower the most
+  b) Among all populations, females consume more alcohol(beer) than males.
+  c) The hippie population spends the least amount of time on their computers.
 
 > Activity 4
 
@@ -326,7 +334,7 @@ m<-ggplot(data=stereotype, mapping=aes(x=age, color=gender, binwidth=4))
 m<-m+geom_histogram()
 m
 ```
-> The ```fill=``` command fills in between lines/boundaries of the individual bargraphs with a different color for each component. On the other hand, the ```color``` command puts different colors on the outlines of the graphs(only the border), it doesn't fill in within the boundaries.
+> The ```fill=``` command fills in between lines/boundaries of the individual bargraphs with a different color for each component. On the other hand, the ```color=``` command only puts different colors on the outlines of the graphs(only the border), it doesn't fill in within the boundaries.
 
 > Activity 5
 
@@ -368,8 +376,8 @@ pl1
 ## Excercise 13
 _While you might expect that BLAST results with long alignments would have high scores, this is not always the case.  Form a hypothesis as to what might influence the relationship between alignment length and score.  Use ggplot to make a new plot to explore this hypothesis.  Does the plot support your hypothesis or not?  State your hypothesis, provide the code for your plot, and state your conclusion._
 
-> BLAST results with long alignments do not always have high scores because the alignments could have lots of mismatches. The plot supports my hypothesis as its shows that the length of an alignment and number of mismatches have a linear relationship which proves that an alignment of long length usually has more mismatches which would give a lower score. 
-Conclusion: Long alignments do not always have high scores due to the presence of high number of mismatches. 
+> BLAST results with long alignments do not always have high scores because these alignments could have a number of mismatches. The plot supports my hypothesis as its shows that the length of an alignment and number of mismatches have a linear relationship which proves that an alignment of long length usually has more mismatches which would give a lower score. 
+Conclusion: Long alignments do not always have high scores. The scores depend on the number of mismatches. If a long alignment has a high number of mismatches then its score will be low.
 
 ```{r}
 pl3<-ggplot(data=fly.worm, mapping=aes(x=len, y=mis))
