@@ -94,6 +94,7 @@ m[,3:5]
 _What does the cbind command do?  How about rbind?_
 ```{r}
 cbind(m,101:105)
+
 ```
 > cbind takes a sequence of vectors,matrix or data frame arguments and combines by columns
 
@@ -104,6 +105,11 @@ rbind(m,101:105)
 > rbind takes a sequence of vectors,matrix or data frame arguments and combines by rows
 
 _Create a new object "n" where the first row is a new row of numbers (your choice) and the following rows are the followed by the m matrix._
+```{r}
+n <- rbind(2:6,m)
+n
+```
+
 
 _Want more? (OPTIONAL) do the same but reverse the order of the rows from m._
 
@@ -151,6 +157,7 @@ table(Percentid>50)
 _Recalculate the above values but in percentage of hits rather than absolute values._
 
 > for E_value=0: 
+
 ```{r}
 2443/(32431+2443)*100
 ```
@@ -167,7 +174,7 @@ _Recalculate the above values but in percentage of hits rather than absolute val
 table (Evalue==0&Percentid<50)
 ```
 
-> 948 hits
+> 948 hits have an E-value of 0 and a percent identity <50
 
 _What is the minimum percent identity of the hits with an E-value equal to 0?_
 ```{r}
@@ -183,14 +190,15 @@ _Are you surprised that sequences with relatively low percent identity can still
 
 _State a hypothesis about what alignment properties might produce a zero E-value even when the percent identity is less than 50%._
 
-> The aligned sequences could have large gaps but the amino acids that actually align could have an exact alignment of amino acids (less mismatches). This would give a low E-value and low percent identity.
+> The low E-value in low percent identity alignments could be due to the fact that the few amino acids that actually align do so with same amino acids(alanine with alanine, valine with valine, etc.) i.e. no/very few mismatches.
 
 _Test your hypothesis_
 ```{r}
 allEval<- fly.worm[which(fly.worm["E"]==0),]
 allEval[which(allEval["pct_ident"]<50),]
+allEval[which(allEval["pct_ident"]>50),]
 ```
-> My hypothesis is wrong because the sequence has high number of mismatches (1508) and high umber of gaps (56). This means that the low E-value was not due to perfect alignment of the amino acids that actually aligned. 
+> The alignments with low E-score and low percent identity (<50) showed to have higher number of mismatches and gaps than the alignments with low E-score and high percent identity. This result proves my hypothesis wrong. Therefore it can be concluded that low E-value is not indicative of less number of mismatches. .
 
 
 ## Excercise 10
@@ -210,6 +218,8 @@ head(stereotype)
 ```
 
 _Record the answers to the "activity break sections" from Ciera's visualiztio tutorial here:_ 
+
+
  **_Activity 1_**
  
 >  1) Nerd females binge drink coffee but hardly ever drink alcohol
@@ -271,10 +281,74 @@ qplot(beer, data = nerds, geom = "density", fill = gender)
 ```
 
 
+
 2) Using the ggplot2 documentation, explore three different geoms, using either the full data set or a subset of the data. Tell me something interesting about the data.
 
 ```{r}
-qplot(computer, data=stereotype, geom="histogram", fill=population)
+library(ggplot2)
+qplot(computer, data=stereotype, geom="density", fill=population, alpha=I(0.5))
+```
+
+```{r}
+hipstersonly<-subset(stereotype, population="hipster")
+qplot(computer,data=hipstersonly, geom="bar", fill=gender)
+```
+
+```{r}
+
+p0<-ggplot(data=hipstersonly, mapping=aes(x=computer, y=age,fill=gender))
+p0<-p0+geom_point()+geom_smooth()
+p0
+```
+> This data indicates that within the entire population, hipster females between 20-23 years of age spend the most time at their computers. 
+
+3) 
+
+> Activity 4
+
+1) With the p base layer, make a unique plot by adding additional layers.
+
+```{r}
+p <- ggplot(stereotype, mapping=aes(x=population,y=shower, fill = population))
+p<-p+geom_boxplot()
+p+coord_flip()
+p
+```
+
+2) Make new base layer. Explore what the difference is between color = and fill =. Use your own words to discern the difference
+```{r}
+q<-ggplot(data=stereotype, mapping=aes(x=age, fill=gender, binwidth=4))
+q<-q+geom_histogram()
+q
+```
+```{r}
+m<-ggplot(data=stereotype, mapping=aes(x=age, color=gender, binwidth=4))
+m<-m+geom_histogram()
+m
+```
+> The ```fill=``` command fills in between lines/boundaries of the individual bargraphs with a different color for each component. On the other hand, the ```color``` command puts different colors on the outlines of the graphs(only the border), it doesn't fill in within the boundaries.
+
+> Activity 5
+
+1) Read about and use the following modifiers correctly with the any portion of the sterotypes dataset you want.
+```{r}
+ggplot(stereotype, aes(beer, tacos, color = population, shape = gender)) + 
+geom_point()
+```
+
+2) Modify color with scale_color_hue()
+
+```{r}
+n<-ggplot(stereotype, aes(beer, tacos, color = population, shape = gender))+ geom_point()
+n<- n+ scale_color_hue( c = 40, l = 50)
+n
+```
+
+3)Make a tricked out box plot using the stereotypes data. Use at least 3 of the aesthetic options available for geom_boxplot.
+
+```{r}
+b<- ggplot(stereotype,aes(beer,coffee, color=population))+geom_boxplot(outlier.color="black", outlier.shape=1, position="dodge", varwidth=TRUE)
+b
 ```
 
 
