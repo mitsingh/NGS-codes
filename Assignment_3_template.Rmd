@@ -220,7 +220,7 @@ head(stereotype)
 _Record the answers to the "activity break sections" from Ciera's visualiztio tutorial here:_ 
 
 
- **_Activity 1_**
+ **Activity 1**
  
 >  1) Nerd females binge drink coffee but hardly ever drink alcohol
  
@@ -249,7 +249,7 @@ Yes, there are 35 more male metalheads than female metalheads who binge drink co
 
 > 4) the '==' function means that the query is **exactly** equal to the input. Example: E-value==0 will look for E-values that are exactly equal to 0, nothing else around it
 
-> Activity 2 : VISUALIZATION
+** Activity 2 : VISUALIZATION**
 
 1) View the distribution of showers. Color by population.
 
@@ -274,7 +274,7 @@ pl20
 ```
 
 
-> ACTIVITY 3
+**ACTIVITY 3**
 
 1) Make a graph that visually describes the difference between beer consumption between gender in the nerd category
 
@@ -312,7 +312,7 @@ p0
   b) Among all populations, females consume more alcohol(beer) than males.
   c) The hippie population spends the least amount of time on their computers.
 
-> Activity 4
+**Activity 4**
 
 1) With the p base layer, make a unique plot by adding additional layers.
 
@@ -336,7 +336,7 @@ m
 ```
 > The ```fill=``` command fills in between lines/boundaries of the individual bargraphs with a different color for each component. On the other hand, the ```color=``` command only puts different colors on the outlines of the graphs(only the border), it doesn't fill in within the boundaries.
 
-> Activity 5
+**Activity 5**
 
 1) Read about and use the following modifiers correctly with the any portion of the sterotypes dataset you want.
 ```{r}
