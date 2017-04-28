@@ -249,7 +249,7 @@ Yes, there are 35 more male metalheads than female metalheads who binge drink co
 
 > 4) the '==' function means that the query is **exactly** equal to the input. Example: E-value==0 will look for E-values that are exactly equal to 0, nothing else around it
 
-** Activity 2 : VISUALIZATION**
+**Activity 2**
 
 1) View the distribution of showers. Color by population.
 
