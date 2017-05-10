@@ -1,3 +1,4 @@
+_Score:_ 18.0/20
 ---
 title: "R Notebook"
 output: html_notebook
@@ -26,6 +27,9 @@ _Use sum() to determine the sum of numbers from 2000 to 20000.  Provide your cod
 ```{r}
 sum(2000,20000)
 ```
+
+*GMT* -1 is 2000 + 20000 you want ```{r} sum(2000:20000)```
+
 
 ## Exercise 2
 _In one or two sentences, describe what the above code snippet it did._
@@ -373,7 +377,7 @@ pl1 <- pl1 + geom_smooth()
 pl1
 ```
 
-
+*GMT* -1 No desciption of what the plot shows 
 
 ## Excercise 13
 _While you might expect that BLAST results with long alignments would have high scores, this is not always the case.  Form a hypothesis as to what might influence the relationship between alignment length and score.  Use ggplot to make a new plot to explore this hypothesis.  Does the plot support your hypothesis or not?  State your hypothesis, provide the code for your plot, and state your conclusion._
